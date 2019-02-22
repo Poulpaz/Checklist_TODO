@@ -68,3 +68,13 @@ class ChecklistViewController: UITableViewController {
         self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
     }
 }
+
+extension AddItemViewControllerDelegate {
+    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+        
+    }
+    
+    func addItemViewController(_ controller: AddItemViewController, didFinishAddingItem item: ChecklistItem) {
+        
+    }
+}

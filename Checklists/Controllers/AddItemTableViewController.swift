@@ -10,11 +10,11 @@ import UIKit
 
 class AddItemTableViewController: UITableViewController {
     
-    @IBAction func Cancel() {
+    @IBAction func Cancel(_ sender: Any) {
         dismiss(animated: true)
     }
     
-    @IBAction func Done() {
+    @IBAction func Done(_ sender: Any) {
         dismiss(animated: true)
     }
 }
