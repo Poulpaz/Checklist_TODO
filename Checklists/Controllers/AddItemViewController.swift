@@ -10,18 +10,20 @@ import UIKit
 
 class AddItemViewController: UITableViewController {
     
+    var delegate: AddItemViewControllerDelegate?
+    
     override func viewWillAppear(_ animated: Bool) {
         becomeFirstResponder()
         buttonDone.isEnabled = false
     }
     
     @IBAction func Cancel() {
-        dismiss(animated: true)
+        delegate?.addItemViewControllerDidCancel(self)
     }
     
     @IBAction func Done() {
-        print(TextField)
-        dismiss(animated: true)
+        let checkListItem = ChecklistItem(text: TextField.text!)
+        delegate?.addItemViewController(self, didFinishAddingItem: checkListItem)
     }
     
     @IBOutlet weak var buttonDone: UIBarButtonItem!

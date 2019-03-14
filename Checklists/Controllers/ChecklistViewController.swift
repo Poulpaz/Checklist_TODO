@@ -33,28 +33,36 @@ class ChecklistViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return checklistItems.count; }
     
     //datasource
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> CheckListItemCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath) as! CheckListItemCell
         configureText(for: cell, withItem: checklistItems[indexPath.row])
         configureCheckmark(for: cell, withItem: checklistItems[indexPath.row])
         return cell
     }
     
-    func configureText(for cell: UITableViewCell, withItem item: ChecklistItem) { cell.textLabel?.text = item.text }
     
-    func configureCheckmark(for cell: UITableViewCell, withItem item: ChecklistItem) {
-        if(item.checked == true) { cell.accessoryType = UITableViewCell.AccessoryType.checkmark }
-        else { cell.accessoryType = UITableViewCell.AccessoryType.none }
+    
+    
+    func configureText(for cell: CheckListItemCell, withItem item: ChecklistItem) {
+        cell.contentLabel?.text = item.text
+        
     }
     
-    func addDummyTodo() {
-        checklistItems.append(ChecklistItem.init(text: "Dummy"))
-        self.tableView.insertRows(at: [IndexPath(row: checklistItems.count - 1, section: 0)], with: .automatic)
-        tableView.reloadData()
+    func configureCheckmark(for cell: CheckListItemCell, withItem item: ChecklistItem) {
+        cell.checkMarkLabel.isHidden = item.checked
     }
-    @IBAction func addButton(_ sender: Any) {
-        addDummyTodo()
+    
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navVC = segue.destination as! UINavigationController
+        let destVC = navVC.topViewController as! AddItemViewController
+        destVC.delegate = self
     }
+    
+    
+    
     
     //delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -69,12 +77,17 @@ class ChecklistViewController: UITableViewController {
     }
 }
 
-extension AddItemViewControllerDelegate {
+
+
+
+extension ChecklistViewController: AddItemViewControllerDelegate {
     func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
-        
+        controller.dismiss(animated: true)
     }
     
     func addItemViewController(_ controller: AddItemViewController, didFinishAddingItem item: ChecklistItem) {
-        
+        checklistItems.append(item)
+        self.loadView()
+        controller.dismiss(animated: true)
     }
 }
