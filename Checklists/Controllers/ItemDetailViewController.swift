@@ -8,9 +8,9 @@
 
 import UIKit
 
-class AddItemViewController: UITableViewController {
+class ItemDetailViewController: UITableViewController {
     
-    var delegate: AddItemViewControllerDelegate?
+    var delegate: ItemDetailViewControllerDelegate?
     var itemToEdit: ChecklistItem?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,15 +28,15 @@ class AddItemViewController: UITableViewController {
     }
     
     @IBAction func Cancel() {
-        delegate?.addItemViewControllerDidCancel(self)
+        delegate?.itemDetailViewControllerDidCancel(self)
     }
     
     @IBAction func Done() {
         if let itemToEdit = itemToEdit {
             itemToEdit.text = TextField.text!
-            delegate?.addItemViewController(self, didFinishEditingItem: itemToEdit)
+            delegate?.itemDetailViewController(self, didFinishEditingItem: itemToEdit)
         } else {
-            delegate?.addItemViewController(self, didFinishAddingItem: ChecklistItem(text: TextField.text!))
+            delegate?.itemDetailViewController(self, didFinishAddingItem: ChecklistItem(text: TextField.text!))
         }
     }
     
@@ -44,13 +44,13 @@ class AddItemViewController: UITableViewController {
     @IBOutlet weak var TextField: UITextField!
 }
 
-protocol AddItemViewControllerDelegate : class {
-    func addItemViewControllerDidCancel(_ controller: AddItemViewController)
-    func addItemViewController(_ controller: AddItemViewController, didFinishAddingItem item: ChecklistItem)
-    func addItemViewController(_ controller: AddItemViewController, didFinishEditingItem item: ChecklistItem)
+protocol ItemDetailViewControllerDelegate : class {
+    func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController)
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishAddingItem item: ChecklistItem)
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditingItem item: ChecklistItem)
 }
 
-extension AddItemViewController: UITextFieldDelegate {
+extension ItemDetailViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         let oldString = TextField.text!

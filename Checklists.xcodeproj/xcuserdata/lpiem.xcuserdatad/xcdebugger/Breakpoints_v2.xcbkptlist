@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Checklists/Controllers/ChecklistViewController.swift"
-            timestampString = "574269394.676397"
+            timestampString = "574273535.521466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "ChecklistViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Checklists/Controllers/AddItemViewController.swift"
-            timestampString = "574269394.676955"
+            timestampString = "574269512.975003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
