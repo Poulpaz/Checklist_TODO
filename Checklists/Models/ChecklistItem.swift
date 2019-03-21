@@ -19,7 +19,5 @@ class ChecklistItem : Codable {
         self.checked = checked
     }
     
-    func toggleChecked() {
-        checked = !checked
-    }
+    func toggleChecked() { checked = !checked }
 }

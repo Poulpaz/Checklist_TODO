@@ -12,6 +12,4 @@ class CheckListItemCell: UITableViewCell {
 
     @IBOutlet weak var checkMarkLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
-    
-    
 }

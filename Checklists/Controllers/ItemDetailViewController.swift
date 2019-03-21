@@ -52,10 +52,8 @@ protocol ItemDetailViewControllerDelegate : class {
 
 extension ItemDetailViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         let oldString = TextField.text!
         let newString = oldString.replacingCharacters(in: (Range(range, in: oldString))!, with: string)
-        
         buttonDone.isEnabled = !newString.isEmpty
         return true
     }

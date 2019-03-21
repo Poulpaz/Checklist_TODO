@@ -14,7 +14,7 @@ class ChecklistViewController: UITableViewController {
     //MARK : Attributes
     var checklistItems = [ChecklistItem]()
     
-    // Documents link's folder
+    // Document link's folder
     static var documentDirectory: URL { return (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).first! }
     
     // Checklists.json link's file
@@ -22,10 +22,9 @@ class ChecklistViewController: UITableViewController {
     
     
     //MARK : At create view
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.loadChecklistItems()
-    }
+    override func viewDidLoad() { super.viewDidLoad() }
+    override func awakeFromNib() { self.loadChecklistItems() }
+    
     
     //MARK : Items' properties & Items' configuration
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return checklistItems.count; }
@@ -37,13 +36,10 @@ class ChecklistViewController: UITableViewController {
         return cell
     }
     
-    func configureText(for cell: CheckListItemCell, withItem item: ChecklistItem) {
-        cell.contentLabel?.text = item.text
-    }
+    func configureText(for cell: CheckListItemCell, withItem item: ChecklistItem) { cell.contentLabel?.text = item.text }
     
-    func configureCheckmark(for cell: CheckListItemCell, withItem item: ChecklistItem) {
-        cell.checkMarkLabel.isHidden = !item.checked
-    }
+    func configureCheckmark(for cell: CheckListItemCell, withItem item: ChecklistItem) { cell.checkMarkLabel.isHidden = !item.checked }
+    
     
     //MARK : Segue properties
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -61,6 +57,7 @@ class ChecklistViewController: UITableViewController {
         }
     }
     
+    
     //MARK : tableView settings
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -75,6 +72,7 @@ class ChecklistViewController: UITableViewController {
         self.saveChecklistItems()
     }
     
+    
     //MARK : Serialize / Deserialize Data to / from Checklist.json
     func saveChecklistItems() {
         let encoder = JSONEncoder()
@@ -83,26 +81,24 @@ class ChecklistViewController: UITableViewController {
             let data = try encoder.encode(self.checklistItems)
             try data.write(to: ChecklistViewController.dataFileUrl, options: [])
         }
-        catch {print(error)}
+        catch { print(error) }
     }
     
     func loadChecklistItems() {
         do {
             let data = try Data(contentsOf: ChecklistViewController.dataFileUrl)
             let decoder = JSONDecoder()
+            print(ChecklistViewController.dataFileUrl)
             self.checklistItems = try decoder.decode([ChecklistItem].self, from: data)
         }
-        catch {
-            print(error)
-        }
+        catch { print(error) }
     }
 }
 
+
     //MARK : Extensions
 extension ChecklistViewController: ItemDetailViewControllerDelegate {
-    func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
-        controller.dismiss(animated: true)
-    }
+    func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) { controller.dismiss(animated: true) }
     
     func itemDetailViewController(_ controller: ItemDetailViewController, didFinishAddingItem item: ChecklistItem) {
         checklistItems.append(item)
