@@ -16,6 +16,8 @@
 		088374B2221581F0009A13B8 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088374B1221581F0009A13B8 /* ChecklistItem.swift */; };
 		08B2C5C2221E93B7009A0423 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B2C5C1221E93B7009A0423 /* ItemDetailViewController.swift */; };
 		08F288B822438599003E6F9B /* AllListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F288B722438599003E6F9B /* AllListViewController.swift */; };
+		08F288BA22439DB1003E6F9B /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F288B922439DB1003E6F9B /* Checklist.swift */; };
+		08F288BE2243E9EF003E6F9B /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F288BD2243E9EF003E6F9B /* ListDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		088374B1221581F0009A13B8 /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
 		08B2C5C1221E93B7009A0423 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		08F288B722438599003E6F9B /* AllListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListViewController.swift; sourceTree = "<group>"; };
+		08F288B922439DB1003E6F9B /* Checklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
+		08F288BD2243E9EF003E6F9B /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				088374B1221581F0009A13B8 /* ChecklistItem.swift */,
+				08F288B922439DB1003E6F9B /* Checklist.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 				0883749E22156AA1009A13B8 /* ChecklistViewController.swift */,
 				08B2C5C1221E93B7009A0423 /* ItemDetailViewController.swift */,
 				08F288B722438599003E6F9B /* AllListViewController.swift */,
+				08F288BD2243E9EF003E6F9B /* ListDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -177,6 +183,8 @@
 				088374B2221581F0009A13B8 /* ChecklistItem.swift in Sources */,
 				08474888223A5EAA00D2D257 /* CheckListItemCell.swift in Sources */,
 				0883749D22156AA1009A13B8 /* AppDelegate.swift in Sources */,
+				08F288BA22439DB1003E6F9B /* Checklist.swift in Sources */,
+				08F288BE2243E9EF003E6F9B /* ListDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
