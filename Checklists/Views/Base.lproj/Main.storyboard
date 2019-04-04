@@ -77,7 +77,7 @@
         <!--Edit Checklist-->
         <scene sceneID="jf3-VB-q0T">
             <objects>
-                <tableViewController id="kQ4-2b-AVc" customClass="ListDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="kQ4-2b-AVc" customClass="MainListDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="JJN-rf-yGB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,14 +92,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the checklist" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z6g-9j-aQS">
-                                                    <rect key="frame" x="8" y="0.0" width="359" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Checklist's name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rgv-5G-3XV">
+                                                    <rect key="frame" x="20" y="0.0" width="335" height="44"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="kQ4-2b-AVc" id="JZ7-X5-NCe"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Rgv-5G-3XV" secondAttribute="trailing" constant="4" id="8jb-pD-eEh"/>
+                                                <constraint firstItem="Rgv-5G-3XV" firstAttribute="leading" secondItem="etC-1A-CO8" secondAttribute="leadingMargin" constant="4" id="ITT-as-Sfp"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Rgv-5G-3XV" secondAttribute="bottom" id="h6m-93-wRq"/>
+                                                <constraint firstItem="Rgv-5G-3XV" firstAttribute="top" secondItem="etC-1A-CO8" secondAttribute="topMargin" id="kjm-UE-kk4"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -111,22 +119,30 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Edit Checklist" id="cxb-Vo-X6G">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DDg-Vx-ZFd"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="SD7-3e-vci"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DDg-Vx-ZFd">
+                            <connections>
+                                <action selector="Cancel" destination="kQ4-2b-AVc" id="eex-6z-8tG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="SD7-3e-vci">
+                            <connections>
+                                <action selector="Done" destination="kQ4-2b-AVc" id="Inv-ly-URZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="doneButton" destination="SD7-3e-vci" id="9d0-MG-ggF"/>
-                        <outlet property="textFieldChecklist" destination="z6g-9j-aQS" id="tFg-wl-h3D"/>
+                        <outlet property="doneButton" destination="SD7-3e-vci" id="ENW-4a-0Db"/>
+                        <outlet property="textFieldChecklist" destination="Rgv-5G-3XV" id="Oif-Ky-lOP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGh-U5-FjV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1604" y="755"/>
+            <point key="canvasLocation" x="1604" y="754.27286356821594"/>
         </scene>
         <!--Edit Item-->
         <scene sceneID="eSO-fN-BGB">
             <objects>
-                <tableViewController id="6Xe-Uq-Z9K" customClass="ItemDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="6Xe-Uq-Z9K" customClass="ChecklistDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Csf-gu-tTc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,9 +157,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jrf-5m-qOu">
-                                                    <rect key="frame" x="4" y="0.0" width="367" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item's name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jrf-5m-qOu">
+                                                    <rect key="frame" x="16" y="1" width="343" height="42"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -153,6 +168,12 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Jrf-5m-qOu" firstAttribute="leading" secondItem="aLR-Vz-ZKR" secondAttribute="leading" constant="4" id="Uvb-KC-MVI"/>
+                                                <constraint firstAttribute="bottom" secondItem="Jrf-5m-qOu" secondAttribute="bottom" constant="1" id="WG9-la-uqS"/>
+                                                <constraint firstAttribute="trailing" secondItem="Jrf-5m-qOu" secondAttribute="trailing" constant="4" id="eXV-Ri-GfO"/>
+                                                <constraint firstItem="Jrf-5m-qOu" firstAttribute="top" secondItem="aLR-Vz-ZKR" secondAttribute="top" constant="1" id="liu-Pl-wEY"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -177,8 +198,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buttonDone" destination="hhv-PB-j90" id="iLm-kI-BVr"/>
-                        <outlet property="tableView" destination="Csf-gu-tTc" id="mn3-SE-Z4z"/>
-                        <outlet property="textField" destination="Jrf-5m-qOu" id="hJa-EM-Fej"/>
+                        <outlet property="checklistDetailsTextFiled" destination="Jrf-5m-qOu" id="1a4-4N-HJM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f5u-Wh-kdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,7 +208,7 @@
         <!--Checklists-->
         <scene sceneID="trD-bp-lpb">
             <objects>
-                <tableViewController id="PQA-i5-PMs" customClass="AllListViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="PQA-i5-PMs" customClass="MainListViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="rWN-ek-RYL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
